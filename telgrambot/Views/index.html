@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> welcome in node js </h1>
+    <form>
+        <input type="text" id="subject" placeholder="subject" />
+        <input type="text" id="email" placeholder="email" />
+        <input type="text" id="message" placeholder="message" />
+        <input type="submit" value="submit" id="">
+    </form>
+
+    <div class="display-data">
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $('form').on('submit', e => {
+            e.preventDefault();
+
+            const email = $("#email")
+            .val()
+            .trim();
+            const subject = $("#subject")
+            .val()
+            .trim();
+            const message = $("#message")
+            .val()
+            .trim();
+
+            const data = {
+                email,
+                subject,
+                message
+            };
+            $.post('/email', data, () => {
+                console.log("server is receied data ");
+                console.log("data", data);
+            })
+        })
+    </script>
+</body>
+</html>
